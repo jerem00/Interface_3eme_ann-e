@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LifeGuard - Constantes des patients</title>
+    <link rel="stylesheet" href="../static/styles.css">
+</head>
+<body>
+    <h1 class="title">LifeGuard</h1>
+    <div class="container">
+        <div class="column">
+            <div class="patient-list" id="column1">
+                <!-- Patients de la colonne 1 seront ajoutés ici -->
+            </div>
+        </div>
+        <div class="column">
+            <div class="patient-list" id="column2">
+                <!-- Patients de la colonne 2 seront ajoutés ici -->
+            </div>
+        </div>
+        <div class="column">
+            <div class="patient-list" id="column3">
+                <!-- Patients de la colonne 3 seront ajoutés ici -->
+            </div>
+        </div>
+    </div>
+    <script>
+        fetch('static/data.json')
+            .then(response => response.json())
+            .then(data => {
+                console.log('Données JSON récupérées avec succès:', data);
+                
+                const patients = data.patients;
+                console.log('Nombre total de patients:', patients.length);
+                
+                const columns = document.querySelectorAll('.patient-list');
+                console.log('Nombre total de colonnes:', columns.length);
+                
+                const numColumns = columns.length;
+                const patientsPerColumn = Math.ceil(patients.length / numColumns);
+                console.log('Nombre de patients par colonne:', patientsPerColumn);
+                
+                for (let i = 0; i < patients.length; i++) {
+                    const patient = patients[i];
+                    const columnIndex = Math.floor(i / patientsPerColumn);
+                    const column = columns[columnIndex];
+                    
+                    console.log('Patient', i + 1, '=>', patient);
+                    console.log('Colonne:', columnIndex + 1);
+                    
+                    const patientDiv = document.createElement('div');
+                    patientDiv.className = 'patient';
+                    patientDiv.innerHTML = `
+                        <h3>Patient ${i + 1}</h3>
+                        <div class="vitals">
+                            <div class="vital">
+                                <h4>Température</h4>
+                                <div class="box">${patient.temperature}°C</div>
+                            </div>
+                            <div class="vital">
+                                <h4>SpO2</h4>
+                                <div class="box">${patient.spo2}%</div>
+                            </div>
+                            <div class="vital">
+                                <h4>Fréquence cardiaque</h4>
+                                <div class="box">${patient.heart_rate} bpm</div>
+                            </div>
+                        </div>
+                    `;
+                    column.appendChild(patientDiv);
+                }
+            })
+            .catch(error => console.error('Erreur lors de la récupération des données JSON:', error));
+    </script>
+</body>
+</html>

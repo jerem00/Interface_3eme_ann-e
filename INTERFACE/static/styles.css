@@ -1,0 +1,72 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f2f2f2;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.column {
+    width: 300px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+    font-family: 'Pacifico', cursive;
+    font-size: 36px;
+    color: red;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.patient-list {
+    margin-top: 20px;
+}
+
+.patient {
+    background-color: #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    padding: 20px;
+}
+
+.patient h3 {
+    margin-top: 0;
+    color: #333;
+}
+
+.vitals {
+    display: flex;
+    justify-content: space-between;
+}
+
+.vital {
+    flex: 1;
+    padding: 10px;
+    text-align: center;
+}
+
+.vital h4 {
+    margin-top: 0;
+    color: #333;
+}
+
+.box {
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    text-align: center;
+    font-size: 18px;
+    color: #666;
+}

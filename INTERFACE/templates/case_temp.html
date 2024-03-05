@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capteur de température</title>
+</head>
+<body>
+    <h1>Température</h1>
+    <div id="temperature">{{ temperature }}</div>
+    <script>
+        function updateTemperature() {
+            fetch('/get_temperature')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById("temperature").innerText = data.temperature;
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        }
+
+        setInterval(updateTemperature, 5000); // Met à jour la température toutes les 5 secondes
+    </script>
+</body>
+</html>

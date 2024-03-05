@@ -1,0 +1,18 @@
+{
+    "patients": [{
+            "temperature": 37.5,
+            "spo2": 98,
+            "heart_rate": 75
+        },
+        {
+            "temperature": 37.2,
+            "spo2": 97,
+            "heart_rate": 80
+        },
+        {
+            "temperature": 37.8,
+            "spo2": 95,
+            "heart_rate": 72
+        }
+    ]
+}
